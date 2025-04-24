@@ -1,0 +1,20 @@
+# Pliki Pythona
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Baza danych SQLite (lokalna)
+db.sqlite3
+
+# Środowisko wirtualne
+venv/
+.env/
+
+# IDE (VS Code, PyCharm)
+.vscode/
+.idea/
+
+# Logi i tymczasowe pliki
+*.log
+*.tmp
