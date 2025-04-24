@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj Produkt</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Edytuj Produkt</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Nazwa:</label><br>
+        <input type="text" name="name" value="{{ product.name }}"><br>
+        <label for="description">Opis:</label><br>
+        <textarea name="description">{{ product.description }}</textarea><br>
+        <label for="price">Cena:</label><br>
+        <input type="text" name="price" value="{{ product.price }}"><br>
+        <label for="category">Kategoria:</label><br>
+        <select name="category">
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if product.category.id == category.id %}selected{% endif %}>{{ category.name }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Zapisz</button>
+    </form>
+</body>
+</html>
