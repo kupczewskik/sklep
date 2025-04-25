@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Zamówienia</title>
+</head>
+<body>
+    <h1>Zamówienia z miesiąca</h1>
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+                <li>Zamówienie #{{ order.id }} z dnia {{ order.date }} ({{ order.orderitem_set.count }} produktów)</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak zamówień w tym miesiącu.</p>
+    {% endif %}
+</body>
+</html>

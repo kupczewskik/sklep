@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
+
 
 urlpatterns = [
+    path('', lambda request: redirect('shop/', permanent=False)),
     path('admin/', admin.site.urls),
     path('shop/', include('shop.urls')),  # Includowanie URL-i z aplikacji shop
 ]

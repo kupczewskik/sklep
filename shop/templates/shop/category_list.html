@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista kategorii</title>
+</head>
+<body>
+    <h1>Lista kategorii</h1>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'products_by_category' category.id %}">{{ category.name }}</a></li>
+        {% empty %}
+            <li>Brak kategorii</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'product_list' %}">← Wróć do produktów</a>
+</body>
+</html>
