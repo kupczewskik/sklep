@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Category, Order
 from django.http import Http404
+from django.http import HttpResponse
+from django.views.decorators.http import require_POST
 
 # Widok listy produktów
 def product_list(request):
@@ -65,3 +67,51 @@ def order_summary(request, year, month):
 def shop_view(request):
     products = Product.objects.all()
     return render(request, 'shop/shop.html', {'products': products})
+
+# Widok koszyka
+def cart_view(request):
+    cart = request.session.get('cart', {})
+    items = []
+    total = 0
+    for product_id, quantity in cart.items():
+        product = get_object_or_404(Product, pk=product_id)
+        subtotal = product.price * quantity
+        items.append({
+            'product': product,
+            'quantity': quantity,
+            'subtotal': subtotal,
+        })
+        total += subtotal
+
+    return render(request, 'shop/cart.html', {
+        'items': items,
+        'total': total,
+    })
+
+def add_to_cart(request, product_id):
+    cart = request.session.get('cart', {})
+    cart[str(product_id)] = cart.get(str(product_id), 0) + 1
+    request.session['cart'] = cart
+    return redirect('cart_view')
+
+# Modyfikacja koszyka
+@require_POST
+def update_cart(request, product_id):
+    quantity = int(request.POST.get('quantity', 1))
+    cart = request.session.get('cart', {})
+
+    if quantity > 0:
+        cart[str(product_id)] = quantity
+    else:
+        cart.pop(str(product_id), None)
+
+    request.session['cart'] = cart
+    return redirect('cart_view')
+
+
+@require_POST
+def remove_from_cart(request, product_id):
+    cart = request.session.get('cart', {})
+    cart.pop(str(product_id), None)
+    request.session['cart'] = cart
+    return redirect('cart_view')

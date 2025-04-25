@@ -7,8 +7,8 @@ Projekt zaliczeniowy przedstawiający prosty sklep internetowy stworzony w oparc
 Celem projektu było stworzenie funkcjonalnego prototypu sklepu internetowego umożliwiającego:
 - przeglądanie dostępnych produktów,
 - wyświetlanie szczegółów produktu,
+- edytowanie dostępnych produktów i ich usuwanie,
 - dodawanie produktów do koszyka,
-- składanie zamówienia (lub jego symulację),
 - zarządzanie produktami z poziomu panelu administratora.
 
 Projekt ma na celu zaprezentowanie praktycznego zastosowania Django w tworzeniu aplikacji webowych z wykorzystaniem modelu MVC (Model-View-Controller) oraz umiejętności frontendowych.

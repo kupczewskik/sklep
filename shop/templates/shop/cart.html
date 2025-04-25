@@ -1,0 +1,27 @@
+<h1>Twój koszyk</h1>
+
+{% if items %}
+    <ul>
+        {% for item in items %}
+        <li>
+            {{ item.product.name }} – {{ item.product.price }} PLN ×
+            <form action="{% url 'update_cart' item.product.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                <button type="submit">Zmień ilość</button>
+            </form>
+            = {{ item.subtotal }} PLN
+            <form action="{% url 'remove_from_cart' item.product.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Usuń</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <p><strong>Łącznie: {{ total }} PLN</strong></p>
+{% else %}
+    <p>Koszyk jest pusty.</p>
+{% endif %}
+
+<a href="{% url 'category_list' %}">Wróć do kategorii</a> |
+<a href="{% url 'product_list' %}">Wróć do produktów</a>
