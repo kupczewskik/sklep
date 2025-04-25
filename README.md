@@ -28,3 +28,5 @@ Projekt ma na celu zaprezentowanie praktycznego zastosowania Django w tworzeniu 
    git clone https://github.com/kupczewskik/sklep.git
    cd sklep
 ## UWAGA: dodałem `python-decouple` i `.env`.
+
+![Drzewo_katalogow_plikow](README.md - sklep - Visual Studio Code 2025-04-25 12_26_34.png)
