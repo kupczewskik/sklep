@@ -29,4 +29,4 @@ Projekt ma na celu zaprezentowanie praktycznego zastosowania Django w tworzeniu 
    cd sklep
 ## UWAGA: dodałem `python-decouple` i `.env`.
 
-![Drzewo_katalogow_plikow](README.md - sklep - Visual Studio Code 2025-04-25 12_26_34.png)
+![Drzewo_katalogow_plikow](tree.png)
