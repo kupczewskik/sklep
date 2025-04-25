@@ -27,3 +27,4 @@ Projekt ma na celu zaprezentowanie praktycznego zastosowania Django w tworzeniu 
    ```bash
    git clone https://github.com/kupczewskik/sklep.git
    cd sklep
+## UWAGA: dodałem `python-decouple` i `.env`.
