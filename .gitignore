@@ -9,6 +9,7 @@ db.sqlite3
 
 # Środowisko wirtualne
 venv/
+.venv/
 .env/
 
 # IDE (VS Code, PyCharm)
